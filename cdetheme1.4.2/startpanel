@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# Script adds xhost +si:localuser:yourownusername
+#
+#Workaround for bug in the older python-xlib libs I'm still using. 
+#Need to port everything to python3/qt5, but yes... If you want to
+#go ahead. Until then, this should work.  
+#
+echo "Trying to set xhost for localuser $USER"
+script=$(readlink -f "$0")
+scriptpath=$(dirname "$script")
+xhost +si:localuser:$USER
+echo "Starting cdepanel in $scriptpath"
+$scriptpath/cdepanel
